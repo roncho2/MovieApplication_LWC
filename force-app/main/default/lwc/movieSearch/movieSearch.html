@@ -1,0 +1,74 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-12-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <!--Filter section-->
+    <div class="filterstyle">
+        <lightning-layout horizontal-align="center">
+            <lightning-layout-item  padding="around-small" size="3">
+                <lightning-combobox
+        name="type"
+        label="Type"
+        placeholder="Select Type"
+        value={selectedType}
+        onchange={handleChange}
+        options={typeoptions}
+        ></lightning-combobox>
+        </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="7"
+            >
+            <lightning-input
+            name="search"
+            label="Enter Search Item"
+            placeholder="Search for Movies/Series"
+            is-loading={loading}
+            onchange={handleChange}
+            type="search"
+        ></lightning-input>
+
+
+        </lightning-layout-item>
+
+            <lightning-layout-item 
+            padding="around-small" 
+            size="2">
+            <lightning-input
+             type="number" 
+             name="pageno" 
+             label="Page" 
+             onchange={handleChange}
+             value={selectedPageNo}
+             field-level-help="Range 1-100"
+             min="1"
+             max="100"
+             step="1"
+             message-when-range-overflow="Maximum value is 1"
+             message-when-range-underflow="Minimum value is 1">
+             
+             
+            </lightning-input>
+
+        
+        </lightning-layout-item>
+        </lightning-layout>
+    
+    </div>
+    <!--Display section-->
+    <div>
+        <lightning-layout
+        horizontal-align="center"
+        multiple-rows="true">
+        <template for:each= {searchResult} for:item="searchItem">
+            <lightning-layout-item size="3" padding="around small">
+
+            </lightning-layout-item>
+
+        </template>
+            
+        </lightning-layout>
+    </div>
+</template>
